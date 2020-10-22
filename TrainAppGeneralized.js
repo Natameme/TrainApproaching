@@ -21,7 +21,7 @@ var Tstatus = ['']; /*stores output of loop*/
       //Logs status of trains into HTML element
       console.log(Tstatus);
 
-      
+
 
 
 
