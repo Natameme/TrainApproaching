@@ -64,22 +64,24 @@ which dictates how many time the loop repeats*/
           Tstatus.push(coor);
 
         //conditional logic
-          if(Tstatus[i].Distance <= 100){
+          if(Tstatus[i].Distance <= 50){
             alert('Train Approaching' + Tstatus[i].ID)
-            document.getElementById("stat").innerHTML("Train Approaching");
-            document.getElementById("notif").innerHTML(Tstatus[i]);
+            document.getElementById('stat').innerHTML = "Train Approaching";
+            document.getElementById('notif').innerHTML(Tstatus[i]);
+          }else{
+            document.getElementById("stat").innerHTML = "No Trains Nearby";
           }
 
 
           }
 
           //products of getTrain
-          console.log(Tstatus);
+          //console.log(Tstatus);
 }
 
 
 
-getuloc(getTrain);
+setInterval(getuloc(getTrain), 5000);
 
 
 
