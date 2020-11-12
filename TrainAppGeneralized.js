@@ -4,7 +4,8 @@ var ulat;
 var ulon;
 
 //MBTA API Link
-const api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence';
+//full URL https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
+const api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=CR-Worcester';
 /*
 route IDs
 Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
@@ -23,7 +24,7 @@ async function getuloc(getTrain){
         console.log(ulat);
         console.log(ulon);
         //var mymap = L.map('mapid').setView([ulat, ulon], 13);     NOT YET FUNCTIONAL information to be used with leaflet.js
-        getTrain(ulat,ulon);   //calls getTrain TO ADD: interval can be updated more with an API key
+        setInterval(function(){getTrain(ulat,ulon)}, 5000);   //calls getTrain TO ADD: interval can be updated more with an API key
         });
       } else {
         document.getElementById("notif").innerHTML = 'geolocation not available';   //Geolocation not available flag TO ADD: ability to pick a spot on the map to track from
@@ -42,6 +43,7 @@ function haversine_distance(lati,loni,ulat,ulon) {
 }
 //getTrain Function
 async function getTrain(ulat,ulon){
+  Tstatus = [];
 //fetches data from MBTA API
   const response = await fetch(api_url);
   const Tdata = await response.json();
@@ -65,8 +67,9 @@ async function getTrain(ulat,ulon){
           Tstatus.push(coor);
 
           //conditional logic to determine if a train is nearby
-            if(Tstatus[i].Distance <= 50){
+            if(Tstatus[i].Distance <= 100){
               document.getElementById('stat').innerHTML = 'Train Approaching' + Tstatus[i].ID + Tstatus[i].Distance;
+              body.style.backgroundColor = (237, 12, 12, 1);
             }else{
               document.getElementById('stat').innerHTML = "No Trains Nearby";
            }
