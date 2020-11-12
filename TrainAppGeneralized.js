@@ -7,6 +7,7 @@ var ulat;
 var ulon;
 
 
+
 //MBTA API Link
 const api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence';
 /*
@@ -23,7 +24,8 @@ function getuloc(callback){
         let ulon = position.coords.longitude;
         console.log(ulat);
         console.log(ulon);
-        callback(ulat,ulon);
+        var mymap = L.map('mapid').setView([ulat, ulon], 13);
+        setInterval(callback(ulat,ulon), 5000);
         });
 
       } else {
@@ -67,23 +69,14 @@ which dictates how many time the loop repeats*/
           if(Tstatus[i].Distance <= 50){
             alert('Train Approaching' + Tstatus[i].ID)
             document.getElementById('stat').innerHTML = "Train Approaching";
-            document.getElementById('notif').innerHTML(Tstatus[i]);
+            document.getElementById('notif').innerHTML = (Tstatus[i].Distance);
           }else{
             document.getElementById("stat").innerHTML = "No Trains Nearby";
-          }
-
-
+               }
           }
 
           //products of getTrain
-          //console.log(Tstatus);
+          console.log(Tstatus);
 }
 
-
-
-setInterval(getuloc(getTrain), 5000);
-
-
-
-
-////////*THE LAND OF BROKEN CODE*///////
+getuloc(getTrain);
