@@ -72,7 +72,7 @@ async function getTrain(ulat,ulon){
            }
   //end of loop
     }
-  //sorts Tstatus by Distance from User
+  //sorts Tstatus by Distance from User TO ADD: different Filtering Methods
     function sortFunction(a, b) {
         if (a.Distance === b.Distance) {
             return 0;
