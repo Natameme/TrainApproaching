@@ -13,8 +13,9 @@ Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newbury
 TO ADD: functionality to filter between the different lines
 */
 
-/*async function lineFilter(){
+async function lineFilter(){
 window.onload=function(){
+
   var GreenB = document.getElementById("Green-B");
   var GB = '';
       GreenB.addEventListener('change', function(){
@@ -26,6 +27,7 @@ window.onload=function(){
       var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
+
   var GreenC = document.getElementById("Green-C");
   var GC = '';
       GreenC.addEventListener('change', function(){
@@ -37,6 +39,7 @@ window.onload=function(){
       var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
+
   var GreenD = document.getElementById("Green-D");
   var GD = '';
       GreenD.addEventListener('change', function(){
@@ -48,6 +51,7 @@ window.onload=function(){
       var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
+
   var GreenE = document.getElementById("Green-E");
   var GE = '';
       GreenE.addEventListener('change', function(){
@@ -206,7 +210,7 @@ var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
 //prints string
 return apifilt ;
   }
-}*/
+}
 
 //Gets User GeoLocation using Navigator API
 async function getuloc(getTrain){
