@@ -5,7 +5,9 @@ var ulon;
 
 //MBTA API Link
 //full URL https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
-var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence' ;
+//var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence' ;
+
+var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=' + apifilt;
 var apifilt  = [];
 /*
 route IDs
@@ -24,7 +26,7 @@ window.onload=function(){
       }else{
         GB = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
 
@@ -36,7 +38,7 @@ window.onload=function(){
       }else{
         GC = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
 
@@ -48,7 +50,7 @@ window.onload=function(){
       }else{
         GD = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
 
@@ -60,7 +62,7 @@ window.onload=function(){
       }else{
         GE = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Orange = document.getElementById("Orange");
@@ -71,7 +73,7 @@ window.onload=function(){
       }else{
         OR = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Blue = document.getElementById("Blue");
@@ -82,7 +84,7 @@ window.onload=function(){
       }else{
         BL = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Red = document.getElementById("Red");
@@ -93,7 +95,7 @@ window.onload=function(){
       }else{
         RD = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Mattapan = document.getElementById("Mattapan");
@@ -104,7 +106,7 @@ window.onload=function(){
       }else{
         MT = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRWorcester = document.getElementById("CR-Worcester");
@@ -115,7 +117,7 @@ window.onload=function(){
       }else{
         CW = '';
       }
-     var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+     apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
      document.getElementById("display").innerHTML = apifilt ;
     });
   var CRNewburyport = document.getElementById("CR-Newburyport");
@@ -126,7 +128,7 @@ window.onload=function(){
       }else{
         CN = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRMiddleborough = document.getElementById("CR-Middleborough");
@@ -137,7 +139,7 @@ window.onload=function(){
       }else{
         CM = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRGreenbush = document.getElementById("CR-Greenbush");
@@ -148,7 +150,7 @@ window.onload=function(){
       }else{
         CG = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRLowell = document.getElementById("CR-Lowell");
@@ -159,7 +161,7 @@ window.onload=function(){
       }else{
         CL = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRFranklin = document.getElementById("CR-Franklin");
@@ -170,7 +172,7 @@ window.onload=function(){
       }else{
         CFR = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRFitchburg = document.getElementById("CR-Fitchburg");
@@ -181,7 +183,7 @@ window.onload=function(){
       }else{
         CFI = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRHaverhill = document.getElementById("CR-Haverhill");
@@ -192,7 +194,7 @@ window.onload=function(){
       }else{
         CH = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
     var CRProvidence = document.getElementById("CR-Providence");
@@ -203,12 +205,13 @@ window.onload=function(){
       }else{
         CPR = '';
       }
-      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
       document.getElementById("display").innerHTML = apifilt ;
     });
-var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
 //prints string
-return apifilt ;
+return apifilt;
+
   }
 }
 
