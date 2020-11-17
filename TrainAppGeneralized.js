@@ -13,20 +13,6 @@ Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newbury
 TO ADD: functionality to filter between the different lines
 */
 
-function getSelectedCheckboxValues(name) {
-    const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
-    let values = [];
-    checkboxes.forEach((checkbox) => {
-        values.push(checkbox.value);
-    });
-    return values;
-}
-
-const btn = document.querySelector('#btn');
-btn.addEventListener('click', (event) => {
-    alert(getSelectedCheckboxValues('color'));
-});
-
 /*async function lineFilter(){
 window.onload=function(){
   var GreenB = document.getElementById("Green-B");
