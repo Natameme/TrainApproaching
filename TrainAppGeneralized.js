@@ -5,12 +5,222 @@ var ulon;
 
 //MBTA API Link
 //full URL https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
-const api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=CR-Worcester';
+var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence' ;
+var apifilt  = [];
 /*
 route IDs
 Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
 TO ADD: functionality to filter between the different lines
 */
+
+function getSelectedCheckboxValues(name) {
+    const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+    let values = [];
+    checkboxes.forEach((checkbox) => {
+        values.push(checkbox.value);
+    });
+    return values;
+}
+
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', (event) => {
+    alert(getSelectedCheckboxValues('color'));
+});
+
+/*async function lineFilter(){
+window.onload=function(){
+  var GreenB = document.getElementById("Green-B");
+  var GB = '';
+      GreenB.addEventListener('change', function(){
+      if(GreenB.checked){
+        GB = 'Green-B';
+      }else{
+        GB = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var GreenC = document.getElementById("Green-C");
+  var GC = '';
+      GreenC.addEventListener('change', function(){
+      if(GreenC.checked){
+        GC = 'Green-C';
+      }else{
+        GC = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var GreenD = document.getElementById("Green-D");
+  var GD = '';
+      GreenD.addEventListener('change', function(){
+      if(GreenD.checked){
+        GD = 'Green-D'
+      }else{
+        GD = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var GreenE = document.getElementById("Green-E");
+  var GE = '';
+      GreenE.addEventListener('change', function(){
+      if(GreenE.checked){
+        GE = 'Green-E'
+      }else{
+        GE = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var Orange = document.getElementById("Orange");
+  var OR = '';
+      Orange.addEventListener('change', function(){
+      if(Orange.checked){
+        OR = 'Orange';
+      }else{
+        OR = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var Blue = document.getElementById("Blue");
+  var BL = '';
+      Blue.addEventListener('change', function(){
+      if(Blue.checked){
+        BL = 'Blue';
+      }else{
+        BL = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var Red = document.getElementById("Red");
+  var RD = '';
+      Red.addEventListener('change', function(){
+      if(Red.checked){
+        RD = 'Red'
+      }else{
+        RD = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var Mattapan = document.getElementById("Mattapan");
+  var MT = '';
+      Mattapan.addEventListener('change', function(){
+      if(Mattapan.checked){
+        MT = 'Mattapan'
+      }else{
+        MT = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRWorcester = document.getElementById("CR-Worcester");
+  var CW  = '';
+      CRWorcester.addEventListener('change', function(){
+      if(CRWorcester.checked){
+        CW = 'CR-Worcester'
+      }else{
+        CW = '';
+      }
+     var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+     document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRNewburyport = document.getElementById("CR-Newburyport");
+  var CN = '';
+      CRNewburyport.addEventListener('change', function(){
+      if(CRNewburyport.checked){
+        CN = 'CR-Newburyport'
+      }else{
+        CN = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRMiddleborough = document.getElementById("CR-Middleborough");
+  var CM = '';
+      CRMiddleborough.addEventListener('change', function(){
+      if(CRMiddleborough.checked){
+        CM = 'CR-Middleborough'
+      }else{
+        CM = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRGreenbush = document.getElementById("CR-Greenbush");
+  var CG = '';
+      CRGreenbush.addEventListener('change', function(){
+      if(CRGreenbush.checked){
+        CG = 'CR-Greenbush'
+      }else{
+        CG = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRLowell = document.getElementById("CR-Lowell");
+  var CL = '';
+      CRLowell.addEventListener('change', function(){
+      if(CRLowell.checked){
+        CL = 'CR-Lowell'
+      }else{
+        CL = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRFranklin = document.getElementById("CR-Franklin");
+  var CFR = '';
+      CRFranklin.addEventListener('change', function(){
+      if(CRFranklin.checked){
+        CFR = 'CR-Franklin'
+      }else{
+        CFR = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRFitchburg = document.getElementById("CR-Fitchburg");
+  var CFI = '';
+      CRFitchburg.addEventListener('change', function(){
+      if(CRFitchburg.checked){
+        CFI = 'CR-Fitchburg'
+      }else{
+        CFI = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+  var CRHaverhill = document.getElementById("CR-Haverhill");
+  var CH = '';
+      CRHaverhill.addEventListener('change', function(){
+      if(CRHaverhill.checked){
+        CH = 'CR-Haverhill'
+      }else{
+        CH = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+    var CRProvidence = document.getElementById("CR-Providence");
+    var CPR = '';
+      CRProvidence.addEventListener('change', function(){
+      if(CRProvidence.checked){
+        CPR = 'CR-Providence'
+      }else{
+        CPR = '';
+      }
+      var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      document.getElementById("display").innerHTML = apifilt ;
+    });
+var apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+//prints string
+return apifilt ;
+  }
+}*/
 
 //Gets User GeoLocation using Navigator API
 async function getuloc(getTrain){
@@ -24,6 +234,7 @@ async function getuloc(getTrain){
         console.log(ulat);
         console.log(ulon);
         //var mymap = L.map('mapid').setView([ulat, ulon], 13);     NOT YET FUNCTIONAL information to be used with leaflet.js
+        getTrain(ulat,ulon);
         setInterval(function(){getTrain(ulat,ulon)}, 5000);   //calls getTrain TO ADD: interval can be updated more with an API key
         });
       } else {
@@ -41,6 +252,24 @@ function haversine_distance(lati,loni,ulat,ulon) {
       var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
       return d;
 }
+function bearingChecker(lati,loni,ulat,ulon) {
+    var y = Math.sin(loni-ulon) * Math.cos(lati);
+    var x = Math.cos(ulat)*Math.sin(lati) -
+    Math.sin(ulat)*Math.cos(lati)*Math.cos(loni-ulon);
+    var radians = Math.atan2(y, x);
+    var bearing = Math.round(radians * (180/Math.PI));
+    return bearing;
+}
+function directionChecker(headi,relHeadi){
+  a = headi - relHeadi;
+  b = Math.sign(a);
+  if(b == 1){
+    return 'Departing ';
+  }
+  else{
+    return 'Approaching ';
+  }
+}
 //getTrain Function
 async function getTrain(ulat,ulon){
   Tstatus = [];
@@ -53,7 +282,7 @@ async function getTrain(ulat,ulon){
   //loop logs data for each train into Tstatus array
     for(i=0;i<=J;i++){
       //vehicle ID
-          var vid = Tdata.data[i].relationships.route.data.id;
+          var vid = Tdata.data[i].relationships.route.data.id + ' #' + Tdata.data[i].id;
       //Vehicle latitude
           var lati =  Tdata.data[i].attributes.latitude;
       //Vehicle Longitude
@@ -61,20 +290,24 @@ async function getTrain(ulat,ulon){
       //Vehicle Bearing
           var headi = Tdata.data[i].attributes.bearing;
       //calls the haversine_distance function to get a distance from user for each train on the network
-          var distance = haversine_distance(lati,loni, ulat, ulon);
+          var dist = haversine_distance(lati,loni,ulat,ulon);
+          var relHeadi = bearingChecker(lati,loni,ulat,ulon);
+          var dir = directionChecker(headi,relHeadi);
       //Logs each variable into an array object, which is then added to the Tstatus array
-          var coor = {ID: vid , Lat: lati , Lon: loni, Heading: headi, Distance: distance }
+          var coor = {ID: vid , Lat: lati , Lon: loni, Heading: headi, Distance: dist, Direction: dir }
           Tstatus.push(coor);
 
           //conditional logic to determine if a train is nearby
             if(Tstatus[i].Distance <= 100){
               document.getElementById('stat').innerHTML = 'Train Approaching' + Tstatus[i].ID + Tstatus[i].Distance;
-              body.style.backgroundColor = (237, 12, 12, 1);
+              document.body.style.backgroundColor = 'rgba(241, 28, 28, 1)';
             }else{
               document.getElementById('stat').innerHTML = "No Trains Nearby";
+              document.body.style.backgroundColor = 'rgba(84,150,89,1 )';
            }
   //end of loop
     }
+
   //sorts Tstatus by Distance from User TO ADD: different Filtering Methods
     function sortFunction(a, b) {
         if (a.Distance === b.Distance) {
@@ -86,11 +319,20 @@ async function getTrain(ulat,ulon){
     }
   //products of getTrain
     console.log(Tstatus.sort(sortFunction));
-    document.getElementById('board0').innerHTML = 'ID: '+Tstatus[0].ID+', Lat: '+Tstatus[0].Lat+', Lon: '+Tstatus[0].Lon+', Heading: '+Tstatus[0].Heading+', Distance: '+Tstatus[0].Distance;
-    document.getElementById('board1').innerHTML = 'ID: '+Tstatus[1].ID+', Lat: '+Tstatus[1].Lat+', Lon: '+Tstatus[1].Lon+', Heading: '+Tstatus[1].Heading+', Distance: '+Tstatus[1].Distance;
-    document.getElementById('board2').innerHTML = 'ID: '+Tstatus[2].ID+', Lat: '+Tstatus[2].Lat+', Lon: '+Tstatus[2].Lon+', Heading: '+Tstatus[2].Heading+', Distance: '+Tstatus[2].Distance;
-    document.getElementById('board3').innerHTML = 'ID: '+Tstatus[3].ID+', Lat: '+Tstatus[3].Lat+', Lon: '+Tstatus[3].Lon+', Heading: '+Tstatus[3].Heading+', Distance: '+Tstatus[3].Distance;
-    document.getElementById('board4').innerHTML = 'ID: '+Tstatus[4].ID+', Lat: '+Tstatus[4].Lat+', Lon: '+Tstatus[4].Lon+', Heading: '+Tstatus[4].Heading+', Distance: '+Tstatus[4].Distance;
+    var N = 1;
+    for(m=0; m<=N; m++){
+    document.getElementById("board").innerHTML = '';
+        for(k=0;k<=J;k++){
+        if (Tstatus[k].ID){
+        var para = document.createElement("h3");
+        var node = document.createTextNode('Direction: '+Tstatus[k].Direction+', ID: '+Tstatus[k].ID+', Lat: '+Tstatus[k].Lat+', Lon: '+Tstatus[k].Lon+', Heading: '+Tstatus[k].Heading+', Distance: '+Tstatus[k].Distance);
+        para.appendChild(node);
+        var element = document.getElementById("board");
+        element.appendChild(para);
+      }
+    }
+  }
 }
 
 getuloc(getTrain);
+lineFilter();
