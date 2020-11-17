@@ -320,10 +320,10 @@ async function getTrain(ulat,ulon){
             return (a.Distance < b.Distance) ? -1 : 1;
         }
     }
-    
+
   //Conditional Logic to Test if a Train is Nearby
-    if(Tstatus[0].Distance <= 100){
-      document.getElementById('stat').innerHTML = 'Train Approaching' + Tstatus[0].ID + Tstatus[0].Distance;
+    if(Tstatus[0].Distance < 101){
+      document.getElementById('stat').innerHTML = 'Train Approaching ' + Tstatus[0].ID +' '+ Tstatus[0].Distance;
       document.body.style.backgroundColor = 'rgba(241, 28, 28, 1)';
     }else{
       document.getElementById('stat').innerHTML = "No Trains Nearby";
@@ -337,7 +337,7 @@ async function getTrain(ulat,ulon){
       document.getElementById("board").innerHTML = '';
           for(k=0;k<=10;k++){
           var para = document.createElement("h3");
-          var node = document.createTextNode('ID: '+ Tstatus[k].ID +', Distance: '+ Tstatus[k].Distance +', Direction: '+ Tstatus[k].Direction);
+          var node = document.createTextNode('ID: '+ Tstatus[k].ID +' Distance: '+ Tstatus[k].Distance +' Direction: '+ Tstatus[k].Direction);
           para.appendChild(node);
           var element = document.getElementById("board");
           element.appendChild(para)
