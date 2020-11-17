@@ -320,6 +320,7 @@ async function getTrain(ulat,ulon){
             return (a.Distance < b.Distance) ? -1 : 1;
         }
     }
+    
   //Conditional Logic to Test if a Train is Nearby
     if(Tstatus[0].Distance <= 100){
       document.getElementById('stat').innerHTML = 'Train Approaching' + Tstatus[0].ID + Tstatus[0].Distance;
