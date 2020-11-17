@@ -7,26 +7,22 @@ var ulon;
 //full URL https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
 //var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence' ;
 
-var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=' + apifilt;
-var apifilt  = [];
-/*
-route IDs
-Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
-TO ADD: functionality to filter between the different lines
-*/
-
+var api_url = apurl + apifilt;
+var apifilt  = '';
+var apurl = '';
 async function lineFilter(){
-window.onload=function(){
+  apurl = 'https://api-v3.mbta.com/vehicles?filter[route]='
 
   var GreenB = document.getElementById("Green-B");
   var GB = '';
       GreenB.addEventListener('change', function(){
       if(GreenB.checked){
-        GB = 'Green-B';
+        GB = 'Green-B,';
       }else{
         GB = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
 
@@ -34,11 +30,12 @@ window.onload=function(){
   var GC = '';
       GreenC.addEventListener('change', function(){
       if(GreenC.checked){
-        GC = 'Green-C';
+        GC = 'Green-C,';
       }else{
         GC = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
 
@@ -46,11 +43,12 @@ window.onload=function(){
   var GD = '';
       GreenD.addEventListener('change', function(){
       if(GreenD.checked){
-        GD = 'Green-D'
+        GD = 'Green-D,'
       }else{
         GD = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
 
@@ -58,161 +56,181 @@ window.onload=function(){
   var GE = '';
       GreenE.addEventListener('change', function(){
       if(GreenE.checked){
-        GE = 'Green-E'
+        GE = 'Green-E,'
       }else{
         GE = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Orange = document.getElementById("Orange");
   var OR = '';
       Orange.addEventListener('change', function(){
       if(Orange.checked){
-        OR = 'Orange';
+        OR = 'Orange,';
       }else{
         OR = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Blue = document.getElementById("Blue");
   var BL = '';
       Blue.addEventListener('change', function(){
       if(Blue.checked){
-        BL = 'Blue';
+        BL = 'Blue,';
       }else{
         BL = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Red = document.getElementById("Red");
   var RD = '';
       Red.addEventListener('change', function(){
       if(Red.checked){
-        RD = 'Red'
+        RD = 'Red,'
       }else{
         RD = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var Mattapan = document.getElementById("Mattapan");
   var MT = '';
       Mattapan.addEventListener('change', function(){
       if(Mattapan.checked){
-        MT = 'Mattapan'
+        MT = 'Mattapan,'
       }else{
         MT = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRWorcester = document.getElementById("CR-Worcester");
   var CW  = '';
       CRWorcester.addEventListener('change', function(){
       if(CRWorcester.checked){
-        CW = 'CR-Worcester'
+        CW = 'CR-Worcester,'
       }else{
         CW = '';
       }
-     apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+     apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+     api_url = apurl + apifilt;
      document.getElementById("display").innerHTML = apifilt ;
     });
   var CRNewburyport = document.getElementById("CR-Newburyport");
   var CN = '';
       CRNewburyport.addEventListener('change', function(){
       if(CRNewburyport.checked){
-        CN = 'CR-Newburyport'
+        CN = 'CR-Newburyport,'
       }else{
         CN = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRMiddleborough = document.getElementById("CR-Middleborough");
   var CM = '';
       CRMiddleborough.addEventListener('change', function(){
       if(CRMiddleborough.checked){
-        CM = 'CR-Middleborough'
+        CM = 'CR-Middleborough,'
       }else{
         CM = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRGreenbush = document.getElementById("CR-Greenbush");
   var CG = '';
       CRGreenbush.addEventListener('change', function(){
       if(CRGreenbush.checked){
-        CG = 'CR-Greenbush'
+        CG = 'CR-Greenbush,'
       }else{
         CG = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRLowell = document.getElementById("CR-Lowell");
   var CL = '';
       CRLowell.addEventListener('change', function(){
       if(CRLowell.checked){
-        CL = 'CR-Lowell'
+        CL = 'CR-Lowell,'
       }else{
         CL = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRFranklin = document.getElementById("CR-Franklin");
   var CFR = '';
       CRFranklin.addEventListener('change', function(){
       if(CRFranklin.checked){
-        CFR = 'CR-Franklin'
+        CFR = 'CR-Franklin,'
       }else{
         CFR = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRFitchburg = document.getElementById("CR-Fitchburg");
   var CFI = '';
       CRFitchburg.addEventListener('change', function(){
       if(CRFitchburg.checked){
-        CFI = 'CR-Fitchburg'
+        CFI = 'CR-Fitchburg,'
       }else{
         CFI = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
   var CRHaverhill = document.getElementById("CR-Haverhill");
   var CH = '';
       CRHaverhill.addEventListener('change', function(){
       if(CRHaverhill.checked){
-        CH = 'CR-Haverhill'
+        CH = 'CR-Haverhill,'
       }else{
         CH = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
     var CRProvidence = document.getElementById("CR-Providence");
     var CPR = '';
       CRProvidence.addEventListener('change', function(){
       if(CRProvidence.checked){
-        CPR = 'CR-Providence'
+        CPR = 'CR-Providence,'
       }else{
         CPR = '';
       }
-      apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+      apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+      api_url = apurl + apifilt;
       document.getElementById("display").innerHTML = apifilt ;
     });
-apifilt = [GB,GC,GD,GE,OR,BL,RD,MT,CW,CN,CM,CG,CL,CFR,CFI,CH,CPR];
+apifilt = GB+GC+GD+GE+OR+BL+RD+MT+CW+CN+CM+CG+CL+CFR+CFI+CH+CPR;
+api_url = apurl + apifilt;
 //prints string
 return apifilt;
 
-  }
+
+}
+
+window.onload = function () {
+  lineFilter();
+  console.log(api_url)
 }
 
 //Gets User GeoLocation using Navigator API
@@ -290,14 +308,6 @@ async function getTrain(ulat,ulon){
           var coor = {ID: vid , Lat: lati , Lon: loni, Heading: headi, Distance: dist, Direction: dir }
           Tstatus.push(coor);
 
-          //conditional logic to determine if a train is nearby
-            if(Tstatus[i].Distance <= 100){
-              document.getElementById('stat').innerHTML = 'Train Approaching' + Tstatus[i].ID + Tstatus[i].Distance;
-              document.body.style.backgroundColor = 'rgba(241, 28, 28, 1)';
-            }else{
-              document.getElementById('stat').innerHTML = "No Trains Nearby";
-              document.body.style.backgroundColor = 'rgba(84,150,89,1 )';
-           }
   //end of loop
     }
 
@@ -310,22 +320,27 @@ async function getTrain(ulat,ulon){
             return (a.Distance < b.Distance) ? -1 : 1;
         }
     }
+  //Conditional Logic to Test if a Train is Nearby
+    if(Tstatus[0].Distance <= 100){
+      document.getElementById('stat').innerHTML = 'Train Approaching' + Tstatus[0].ID + Tstatus[0].Distance;
+      document.body.style.backgroundColor = 'rgba(241, 28, 28, 1)';
+    }else{
+      document.getElementById('stat').innerHTML = "No Trains Nearby";
+      document.body.style.backgroundColor = 'rgba(84,150,89,1 )';
+   }
+
   //products of getTrain
-    console.log(Tstatus.sort(sortFunction));
-    var N = 1;
-    for(m=0; m<=N; m++){
-    document.getElementById("board").innerHTML = '';
-        for(k=0;k<=J;k++){
-        if (Tstatus[k].ID){
-        var para = document.createElement("h3");
-        var node = document.createTextNode('Direction: '+Tstatus[k].Direction+', ID: '+Tstatus[k].ID+', Lat: '+Tstatus[k].Lat+', Lon: '+Tstatus[k].Lon+', Heading: '+Tstatus[k].Heading+', Distance: '+Tstatus[k].Distance);
-        para.appendChild(node);
-        var element = document.getElementById("board");
-        element.appendChild(para);
-      }
+      console.log(Tstatus.sort(sortFunction));
+      var N = 1;
+      for(m=0; m<=N; m++){
+      document.getElementById("board").innerHTML = '';
+          for(k=0;k<=10;k++){
+          var para = document.createElement("h3");
+          var node = document.createTextNode('ID: '+ Tstatus[k].ID +', Distance: '+ Tstatus[k].Distance +', Direction: '+ Tstatus[k].Direction);
+          para.appendChild(node);
+          var element = document.getElementById("board");
+          element.appendChild(para)
     }
   }
 }
-
 getuloc(getTrain);
-lineFilter();
