@@ -3,9 +3,32 @@ var Tstatus = []; /*stores output of loop*/
 var ulat;
 var ulon;
 
+window.onload = function(){
+  async function leaflet(){
+    var ulat;
+    var ulon;
+   //Leaflet.js parameters
+   const attribution ='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+   const mymap = L.map('mapid').setView([42.355749, -71.061617], 13);
+
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+  await navigator.geolocation.getCurrentPosition(function(position) {
+      //defines ulat and ulon variables
+        ulat = position.coords.latitude;
+        ulon = position.coords.longitude;
+      var umarker = L.marker([ulat,ulon]).addTo(mymap);
+        });
+
+        Tstatus.foreach(L.marker([Tstatus.Latitude,Tstatus.Longitude]).addTo(mymap));
+    }
+leaflet();
+}
 //MBTA API Link
 //full URL https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
 //var api_url = 'https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence' ;
+
 
 var api_url = apurl + apifilt;
 var apifilt  = '';
