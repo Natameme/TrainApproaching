@@ -4,26 +4,7 @@ var ulat;
 var ulon;
 
 window.onload = function(){
-  async function leaflet(){
-    var ulat;
-    var ulon;
-   //Leaflet.js parameters
-   const attribution ='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-   const mymap = L.map('mapid').setView([42.355749, -71.061617], 13);
 
-        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        const tiles = L.tileLayer(tileUrl, { attribution });
-        tiles.addTo(mymap);
-  await navigator.geolocation.getCurrentPosition(function(position) {
-      //defines ulat and ulon variables
-        ulat = position.coords.latitude;
-        ulon = position.coords.longitude;
-      var umarker = L.marker([ulat,ulon]).addTo(mymap);
-        });
-
-        Tstatus.foreach(L.marker([Tstatus.Latitude,Tstatus.Longitude]).addTo(mymap));
-    }
-leaflet();
 }
 //MBTA API Link
 //full URL https://api-v3.mbta.com/vehicles?filter[route]=Green-B,Green-C,Green-D,Green-E,Orange,Blue,Red,Mattapan,CR-Worcester,CR-Newburyport,CR-Middleborough,CR-Greenbush,CR-Lowell,CR-Franklin,CR-Fitchburg,CR-Haverhill,CR-Providence
@@ -344,15 +325,6 @@ async function getTrain(ulat,ulon){
         }
     }
 
-  //Conditional Logic to Test if a Train is Nearby
-    if(Tstatus[0].Distance < 101){
-      document.getElementById('stat').innerHTML = 'Train Approaching ' + Tstatus[0].ID +' '+ Tstatus[0].Distance;
-      document.body.style.backgroundColor = 'rgba(241, 28, 28, 1)';
-    }else{
-      document.getElementById('stat').innerHTML = "No Trains Nearby";
-      document.body.style.backgroundColor = 'rgba(84,150,89,1 )';
-   }
-
   //products of getTrain
       console.log(Tstatus.sort(sortFunction));
       var N = 1;
@@ -364,7 +336,17 @@ async function getTrain(ulat,ulon){
           para.appendChild(node);
           var element = document.getElementById("board");
           element.appendChild(para)
+
+          //Conditional Logic to Test if a Train is Nearby
+            if(Tstatus[0].Distance < 101){
+              document.getElementById('stat').innerHTML = 'Train Approaching ' + Tstatus[0].ID +' '+ Tstatus[0].Distance;
+              document.body.style.backgroundColor = 'rgba(241, 28, 28, 1)';
+            }else{
+              document.getElementById('stat').innerHTML = "No Trains Nearby";
+              document.body.style.backgroundColor = 'rgba(84,150,89,1 )';
+           }
     }
   }
 }
 getuloc(getTrain);
+setInterval(function(){getTrain()}, 10000);
